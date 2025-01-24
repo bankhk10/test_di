@@ -6,8 +6,6 @@ import Loading from "./Loading.vue";
 
 const isLoading = ref(false);
 
-
-
 </script>
 
 <template>
@@ -18,12 +16,8 @@ const isLoading = ref(false);
                     <div class="card-header bg-info bg-gradient">
                         รายชื่อผู้ใช้งานระบบ
                         <div class="btn-group me-2">
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-warning"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"
-                            >
+                            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
                                 <i class="fas fa-users"></i> Add User
                             </button>
                         </div>
@@ -31,9 +25,7 @@ const isLoading = ref(false);
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table
-                                class="table table-striped table-hover table-sm"
-                            >
+                            <table class="table table-striped table-hover table-sm">
                                 <thead>
                                     <tr class="text-center">
                                         <th scope="col">#</th>
@@ -58,12 +50,7 @@ const isLoading = ref(false);
                                             ไม่พบข้อมูล
                                         </td>
                                     </tr>
-                                    <tr
-                                        v-else
-                                        v-for="(item, index) in items"
-                                        :key="index"
-                                        class="text-center"
-                                    >
+                                    <tr v-else v-for="(item, index) in items" :key="index" class="text-center">
                                         <td>{{ index + 1 }}</td>
                                         <td>{{ item.user_ref.code }}</td>
                                         <td>
@@ -81,24 +68,16 @@ const isLoading = ref(false);
                                             }}
                                         </td>
                                         <td>
-                                            <button
-                                                v-if="
-                                                    item.user_id !==
-                                                    roleUser.user_id
-                                                "
-                                                @click="editItem(item)"
-                                                class="btn btn-primary btn-sm"
-                                            >
+                                            <button v-if="
+                                                item.user_id !==
+                                                roleUser.user_id
+                                            " @click="editItem(item)" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <button
-                                                v-if="
-                                                    item.user_id !==
-                                                    roleUser.user_id
-                                                "
-                                                @click="deleteItem(item)"
-                                                class="btn btn-danger btn-sm"
-                                            >
+                                            <button v-if="
+                                                item.user_id !==
+                                                roleUser.user_id
+                                            " @click="deleteItem(item)" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-trash-alt"></i>
                                             </button>
                                         </td>
@@ -113,32 +92,17 @@ const isLoading = ref(false);
     </div>
 
     <!-- Modal -->
-    <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-    >
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add User</h5>
 
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    ></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <select
-                            class="form-select"
-                            id="role_type"
-                            name="role_type"
-                        >
+                        <select class="form-select" id="role_type" name="role_type">
                             <option value="">เลือก สิทธิใช้งาน</option>
                             <option value="SuperAdmin">SuperAdmin</option>
                             <option value="Admin">Admin</option>
@@ -146,35 +110,15 @@ const isLoading = ref(false);
                         </select>
                     </div>
                     <div class="input-group mb-3">
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="code"
-                            name="code"
-                            placeholder="รหัสพนักงาน"
-                        />
+                        <input type="text" class="form-control" id="code" name="code" placeholder="รหัสพนักงาน" />
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button
-                        v-if="!isLoadingAddData"
-                        type="button"
-                        class="btn btn-primary"
-                        @click="addData"
-                    >
+                    <button v-if="!isLoadingAddData" type="button" class="btn btn-primary" @click="addData">
                         Save
                     </button>
-                    <button
-                        v-else
-                        class="btn btn-primary"
-                        type="button"
-                        disabled
-                    >
-                        <span
-                            class="spinner-border spinner-border-sm"
-                            role="status"
-                            aria-hidden="true"
-                        ></span>
+                    <button v-else class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         <span class="visually-hidden">Loading...</span>
                     </button>
                 </div>
@@ -183,33 +127,17 @@ const isLoading = ref(false);
     </div>
 
     <!-- Modal Edit -->
-    <div
-        class="modal fade"
-        id="EditModal"
-        tabindex="-1"
-        aria-labelledby="editLabel"
-        aria-hidden="true"
-    >
+    <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Edit User</h5>
 
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    ></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <select
-                            class="form-select"
-                            id="role_typee"
-                            name="role_typee"
-                            v-model="editUser.role_type"
-                        >
+                        <select class="form-select" id="role_typee" name="role_typee" v-model="editUser.role_type">
                             <option value="">เลือก สิทธิใช้งาน</option>
                             <option value="SuperAdmin">SuperAdmin</option>
                             <option value="Admin">Admin</option>
@@ -217,54 +145,23 @@ const isLoading = ref(false);
                         </select>
                     </div>
                     <div class="input-group mb-3">
-                        <input
-                            type="hidden"
-                            class="form-control"
-                            id="codee"
-                            name="codee"
-                            placeholder="รหัสพนักงาน"
-                            v-model="editUser.code"
-                        />
-                        <select
-                            class="form-select"
-                            id="active"
-                            name="active"
-                            v-model="editUser.active"
-                        >
+                        <input type="hidden" class="form-control" id="codee" name="codee" placeholder="รหัสพนักงาน"
+                            v-model="editUser.code" />
+                        <select class="form-select" id="active" name="active" v-model="editUser.active">
                             <option value="1">Active</option>
                             <option value="0">Disable</option>
 
                         </select>
 
-                        <input
-                            type="hidden"
-                            class="form-control"
-                            id="id"
-                            name="id"
-                            v-model="editUser.id"
-                        />
+                        <input type="hidden" class="form-control" id="id" name="id" v-model="editUser.id" />
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button
-                        v-if="!isLoadingAddData"
-                        type="button"
-                        class="btn btn-primary"
-                        @click="updateData"
-                    >
+                    <button v-if="!isLoadingAddData" type="button" class="btn btn-primary" @click="updateData">
                         Update
                     </button>
-                    <button
-                        v-else
-                        class="btn btn-primary"
-                        type="button"
-                        disabled
-                    >
-                        <span
-                            class="spinner-border spinner-border-sm"
-                            role="status"
-                            aria-hidden="true"
-                        ></span>
+                    <button v-else class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         <span class="visually-hidden">Loading...</span>
                     </button>
                 </div>

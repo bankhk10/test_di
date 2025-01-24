@@ -5,7 +5,6 @@ import axios from 'axios';
 import QRCode from 'qrcode';
 import Cookies from 'js-cookie';
 import { useRoute, useRouter } from 'vue-router';
-import Header from '../../components/admin/Header.vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -121,6 +120,7 @@ const generateQRCode = async () => {
         qrCodeImage.value = await QRCode.toDataURL(encryptedUrl);
     } catch (error) {
         console.error('Error generating encrypted URL or QR Code:', error);
+        
     }
 };
 
@@ -130,7 +130,6 @@ const setCookies = async () => {
         Cookies.set('longitude', locationData.value?.longitude, { expires: 1 });
         Cookies.set('device_info', deviceInfo.value, { expires: 1 });
         Cookies.set('key_id', user_id, { expires: 1 });
-
     } catch (error) {
         console.error("Error sending data to server:", error);
     }

@@ -34,7 +34,7 @@ const imageCard = "/img/logoVbeyond-bg.png";
 </script>
 
 <template>
-    <div class="min-h-full">
+    <div class="w-full">
         <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
             <div class="mx-auto lg:px-12">
                 <div class="flex h-16 items-center justify-between">
@@ -147,3 +147,13 @@ export default {
     name: 'Header',
 };
 </script>
+
+<style scoped>
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+</style>

@@ -1,6 +1,48 @@
 <script setup>
 const imageCard = "/img/logoVbeyond-bg.png";
+const users = [
+    {
+        name: "Bonnie Green",
+        jobTitle: "Visual Designer",
+        imageCard: imageCard,
+    },
+    {
+        name: "John Doe",
+        jobTitle: "Software Engineer",
+        imageCard: imageCard,
+    },
+    {
+        name: "Jane Smith",
+        jobTitle: "Product Manager",
+        imageCard: imageCard,
+    },
+    {
+        name: "Jane Smith",
+        jobTitle: "Product Manager",
+        imageCard: imageCard,
+    },
+    {
+        name: "Jane Smith",
+        jobTitle: "Product Manager",
+        imageCard: imageCard,
+    },
+    {
+        name: "Jane Smith",
+        jobTitle: "Product Manager",
+        imageCard: imageCard,
+    },
+    {
+        name: "Jane Smith",
+        jobTitle: "Product Manager",
+        imageCard: imageCard,
+    },
+    {
+        name: "Jane Smith",
+        jobTitle: "Product Manager",
+        imageCard: imageCard,
+    },
 
+];
 
 </script>
 

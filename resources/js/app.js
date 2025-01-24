@@ -13,6 +13,10 @@ import "@mdi/font/css/materialdesignicons.css";
 import Header from './components/admin/Header.vue';
 import Camera from './components/camera/Camera.vue';
 import User from './components/user/index.vue';
+import Userd from './components/NavBar_all.vue';
+import UserPage from "./components/UserPage.vue";
+import Dashboard from "./components/Dashboard.vue";
+
 
 
 import axios from "axios";
@@ -35,6 +39,9 @@ app.use(vuetify);
 
 app.component('Header', Header);
 app.component('camera', Camera);
-app.component('User', User);
+// app.component('User', User);
+// app.component('Userd', Userd);
+app.component('UserPage', UserPage);
+app.component('Dashboard', Dashboard);
 
 app.mount("#appvue");

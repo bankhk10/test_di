@@ -1,6 +1,7 @@
 <template>
     <div>
       <button @click="toggleCamera">{{ cameraActive ? 'หยุดกล้อง' : 'เปิดกล้อง' }}</button>
+      <button v-if="cameraActive" @click="switchCamera">สลับกล้อง</button>
       <video ref="video" width="640" height="480" autoplay></video>
       <div v-if="qrCodeData">
         <p>QR Code ที่พบ: {{ qrCodeData }}</p>
@@ -17,9 +18,10 @@
         cameraActive: false,
         stream: null,
         qrCodeData: null,
+        facingMode: "environment", // ค่าเริ่มต้นใช้กล้องหลัง
       };
     },
-    methods: { 
+    methods: {
       async toggleCamera() {
         if (this.cameraActive) {
           this.stopCamera();
@@ -30,10 +32,12 @@
       },
       async startCamera() {
         try {
-          const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-          this.stream = stream;
+          const constraints = {
+            video: { facingMode: this.facingMode }  // กำหนดกล้องหน้า/หลัง
+          };
+          this.stream = await navigator.mediaDevices.getUserMedia(constraints);
           const video = this.$refs.video;
-          video.srcObject = stream;
+          video.srcObject = this.stream;
 
           video.addEventListener("loadedmetadata", () => {
             this.scanQRCode();
@@ -43,12 +47,15 @@
         }
       },
       stopCamera() {
-        const video = this.$refs.video;
         if (this.stream) {
-          const tracks = this.stream.getTracks();
-          tracks.forEach((track) => track.stop());
+          this.stream.getTracks().forEach(track => track.stop());
         }
-        video.srcObject = null;
+        this.$refs.video.srcObject = null;
+      },
+      switchCamera() {
+        this.facingMode = this.facingMode === "user" ? "environment" : "user";
+        this.stopCamera();
+        this.startCamera();
       },
       scanQRCode() {
         const video = this.$refs.video;
@@ -65,11 +72,9 @@
 
             if (code) {
               this.qrCodeData = code.data;
-
-              // ตรวจสอบว่า QR Code เป็น URL หรือไม่
               if (this.isValidURL(this.qrCodeData)) {
-                window.open(this.qrCodeData, "_blank"); // เปิดลิงก์ในแท็บใหม่
-                this.stopCamera(); // หยุดกล้องหลังจากเปิดลิงก์
+                window.open(this.qrCodeData, "_blank");
+                this.stopCamera();
               }
             } else {
               this.qrCodeData = null;
@@ -94,6 +99,7 @@
 
   <style scoped>
   button {
+    margin-right: 10px;
     margin-bottom: 10px;
   }
   video {

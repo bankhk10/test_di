@@ -23,20 +23,34 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
+Route::get('/dashboard', function () {
+    return view('app');
+});
 
 
+Route::get('/userPage', function () {
+    return view('app');
+});
+
+
+
+      
 
 Route::get('CeKjC3ep2f1elK92P6ttwYHHwUpOtRF55yo9Gaxy5MD5gjkU4Xh0iKFqvGXprJI2/{id}&{token}', [CustomAuthController::class, 'AllowLoginConnect']);
 Route::get('/generate-encrypted-card-url/{id}', [CardController::class, 'generateEncrypted']);
 Route::get('/get-ip', [CardController::class, 'getIp']);
 
-Route::get('/admin', function () {
-    return view('app');
-});
+// Route::get('/admin', function () {
+//     return view('app');
+// });
 
-Route::get('/admin/detail', function () {
-    return view('app');
-});
+// Route::get('/Userd', function () {
+//     return view('app');
+// });
+
+// Route::get('/admin/detail', function () {
+//     return view('app');
+// });
 
 Route::get('/getCard/{id}', function () {
     return view('app');

@@ -7,6 +7,9 @@ import Admin from '../components/pages/admin/index.vue';
 import Detail from '../components/pages/admin/Detail.vue';
 import Camera from '../components/camera/Camera.vue';
 import User from '../components/user/index.vue';
+import Userd from '../components/NavBar_all.vue';
+import UserPage from '../components/UserPage.vue';
+import Dashboard from '../components/Dashboard.vue';
 
 
 const routes = [
@@ -32,16 +35,16 @@ const routes = [
         component: Card,
         props: true // ส่ง id เป็น props ให้กับคอมโพเนนต์
     },
-    {
-        path: '/admin',
-        name: 'admin',
-        component: Admin,
-    },
-    {
-        path: '/admin/detail',
-        name: 'admin.detail',
-        component: Detail,
-    },
+    // {
+    //     path: '/admin',
+    //     name: 'admin',
+    //     component: Admin,
+    // },
+    // {
+    //     path: '/admin/detail',
+    //     name: 'admin.detail',
+    //     component: Detail,
+    // },
     {
         path: '/camera',
         name: 'camera',
@@ -51,6 +54,21 @@ const routes = [
         path: '/user/:id&:token',
         name: 'User',
         component: User,
+    },
+    // {
+    //     path: '/userd',
+    //     name: 'Userd',
+    //     component: Userd,
+    // },
+    {
+        path: '/userPage',
+        name: 'userPage',
+        component: UserPage,
+    },
+    {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: Dashboard,
     },
 
 ];
